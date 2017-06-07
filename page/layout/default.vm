@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+#html()
+	#head()
+		<meta charset="UTF-8">
+	    <title>数据分析系统</title>   
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="description" content="">
+	    <meta name="keywords" content="数据分析系统">
+	    <meta name="author" content="liul">
+	    <style>
+	    	html,body{
+	    		height:100%;
+	    	}
+	    </style>
+	    #require("components/jqueryui/ui-lightness/jquery-ui-1.10.4.custom.min.css")
+	    #require("components/bootstrap/css/bootstrap.css")
+	    #require("components/fonts-awesome/css/font-awesome.css")
+	    #require("components/fontello/css/fontello.css")
+	    #require("components/animate-css/animate.min.css")
+	    #require("components/nifty-modal/css/component.css")
+	    #require("components/magnific-popup/magnific-popup.css")
+	    #require("components/ios7-switch/ios7-switch.css")
+	    #require("components/pace/pace.css")
+	    #require("components/sortable/sortable-theme-bootstrap.css")
+	    #require("components/bootstrap-datepicker/css/datepicker.css")
+	    #require("components/jquery-icheck/skins/all.css")
+	    #require("components/jquery-notifyjs/styles/metro/notify-metro.css")
+
+
+	    #require("components/prettify/github.css")
+	    ## #require("components/rickshaw/rickshaw.min.css")
+	    ## #require("components/morrischart/morris.css")
+	    ## #require("components/jquery-jvectormap/css/jquery-jvectormap-1.2.2.css")
+	    ## #require("components/jquery-clock/clock.css")
+	    ## #require("components/bootstrap-calendar/css/bic_calendar.css")
+	    ## #require("components/sortable/sortable-theme-bootstrap.css")
+	    ## #require("components/jquery-weather/simpleweather.css")
+	    ## #require("components/bootstrap-xeditable/css/bootstrap-editable.css")
+
+	    #require("components/dashboard/style.css")
+	    #require("components/dashboard/style-responsive.css")
+
+	    #require("components/jquery/jquery-2.1.0.js")
+	    #require("components/bootstrap/js/bootstrap.js")
+	    #require("components/jqueryui/jquery-ui-1.10.4.custom.min.js")
+	    #require("components/jquery-ui-touch/jquery.ui.touch-punch.min.js")
+	    #require("components/jquery-detectmobile/detect.js")
+	    #require("components/jquery-animate-numbers/jquery.animateNumbers.js")
+	    #require("components/ios7-switch/ios7.switch.js")
+	    #require("components/fastclick/fastclick.js")
+	    #require("components/jquery-blockui/jquery.blockUI.js")
+	    #require("components/bootstrap-bootbox/bootbox.min.js")
+	    #require("components/jquery-slimscroll/jquery.slimscroll.js")
+	    #require("components/jquery-sparkline/jquery-sparkline.js")
+	    #require("components/nifty-modal/js/classie.js")
+	    #require("components/nifty-modal/js/modalEffects.js")
+	    #require("components/sortable/sortable.min.js")
+	    #require("components/bootstrap-fileinput/bootstrap.file-input.js")
+	    #require("components/bootstrap-select/bootstrap-select.min.js")
+	    #require("components/bootstrap-select2/select2.min.js")
+	    #require("components/magnific-popup/jquery.magnific-popup.min.js")
+	    #require("components/pace/pace.min.js")
+	    #require("components/jquery-notifyjs/notify.min.js")
+	    #require("components/jquery-notifyjs/styles/metro/notify-metro.js")
+	    #require("components/bootstrap-datepicker/js/bootstrap-datepicker.js")
+	    #require("components/jquery-icheck/icheck.min.js")
+
+	    #require("components/apps/chat.js")
+	    #require("components/prettify/prettify.js")
+	    #require("components/init.js")
+	    ## #require("components/d3/d3.v3.js")
+	    ## #require("components/rickshaw/rickshaw.min.js")
+	    ## #require("components/raphael/raphael-min.js")
+	    ## #require("components/morrischart/morris.min.js")
+	    ## #require("components/jquery-knob/jquery.knob.js")
+	    ## #require("components/jquery-jvectomap/js/jquery-jvectormap-1.2.2.min.js")
+	    ## #require("components/jquery-jvectomap/js/jquery-jvectomap-us-aea-en.js")
+	    ## #require("components/jquery-clock/clock.js")
+	    ## #require("components/jquery-easypiechart/jquery.easypiechart.min.js")
+	    ## #require("components/jquery-weather/jquery.simpleWeather-2.6.min.js")
+	    ## #require("components/bootstrap-xeditable/js/bootstrap-editable.min.js")
+	    ## #require("components/bootstrap-calendar/js/bic_calendar.min.js")
+	    ## #require("components/apps/calculator.js")
+	    ## #require("components/apps/todo.js")
+	    ## #require("components/apps/notes.js")
+	    ## #require("components/index.js")
+
+	#end
+    #body()
+    	<div id="wrapper">
+
+    		<!-- 顶部导航 -->
+			#widget("/widget/header.vm")
+
+			<!-- 左边菜单 -->
+			#widget("/widget/leftMenu.vm")
+
+			<!-- 右边菜单 -->
+			<div class="right side-menu"></div>
+
+			<!-- 内容部分 -->
+			<div class="content-page">
+				<div class="content">
+					<div class="page-heading">
+    					#block("content")#end
+					</div>
+
+					<!-- 底部模块 -->
+					<footer>
+
+					</footer>
+				</div>
+			</div>
+		</div>
+		<script>
+			var resizefunc = [];
+		</script>
+    #end
+    #block("back_script")#end
+#end

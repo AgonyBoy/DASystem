@@ -1,0 +1,5 @@
+#extends("page/layout/default.vm")
+	#block("content")
+		sdf
+	#end
+#end
