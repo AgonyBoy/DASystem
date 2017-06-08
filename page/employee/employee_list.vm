@@ -1,0 +1,265 @@
+#extends("page/layout/default.vm")
+	#block("header")
+	<style>
+		.content-page > .content{padding:5px !important;}
+		.widget .widget-header{border-bottom:1px solid #DFDFDF !important;height:54px !important;}
+		@media (min-width: 768px){
+			.col-sm-10{width:55.333333% !important;padding-left:0 !important;}
+		}
+		@media (min-width: 768px){
+			.col-sm-2{width:20.666667% !important;}
+		}
+		@media (min-width: 768px){
+			.form-horizontal .control-label{padding-right:5px;}
+		}
+		@media (min-width: 768px){
+			input,select{max-width: 200px;}
+		}
+		span.area-tit{
+			font-size:16px;
+			line-height: 50px;
+			padding:0 10px;
+			color:#000;
+		}
+		div.btn-wrapper{float:right;margin-top:10px;}
+		div.form-horizontal{margin-bottom: 0;padding-bottom: 10px;}
+		div.routine{
+			display: inline-flex;
+			padding:10px;
+		}
+		div.routine > label{
+			width:60px;
+			display: inline-table;
+			line-height: 35px;
+			color:#5b5b5b;
+		}
+		div.routine > input{margin-left:10px;}
+		div.widget-content.padding{
+			border-bottom:1px solid #dfdfdf;
+		}
+		th,td{
+		    white-space: nowrap;
+		    overflow: hidden;
+		    text-overflow: ellipsis;
+		    max-width: 15em;
+		    vertical-align: middle !important;
+		}
+		span.show-photo{
+			width:60px;
+			height:60px;
+			display: inline-block;
+			overflow: hidden;
+			border-radius:50%;
+		}
+		span.show-photo > img{
+			width:100%;
+			min-height: 100%;
+		}
+		span.mbx{
+			width:100%;
+			padding:0 10px;
+			height:30px;
+			display: block;
+			background:#f3f3f3;
+			line-height: 30px;
+		}
+		span.mbx > a{color:#48a4f3;}
+		span.mbx > a:after{
+			content:"/";
+			padding:0 5px;
+		}
+		span.mbx > a:last-child:after{content:"";}
+		.pagination > li{display:inline-block !important;}
+		.table-responsive{border-bottom:1px solid #dfdfdf;}
+		.pager li > input{float:left;margin-top:2px;width:60px;}
+	</style>
+	#end
+	#block("content")
+
+		<!-- 条件选择模块 -->
+		<div class="widget form-horizontal">
+			<span class="mbx"><a href="#"><i class="fa fa-users"></i> 雇员管理</a><a href="#">雇员列表</a></span>
+			<div class="widget-header transparent">
+				<div class="routine">
+					<label>选择类型:</label>
+					<select class="form-control">
+						<option>类型1</option>
+						<option>类型2</option>
+						<option>类型3</option>
+					</select>
+					<input type="text" class="form-control" placeholder="输入过滤关键字"/>
+				</div>
+				<div class="btn-wrapper">
+	                <a class="btn btn-primary"><i class="fa fa-search"></i> 查询</a>
+	                <a class="btn btn-success"><i class="fa fa-refresh"></i> 重置条件</a>
+	                <a class="btn btn-info" onclick="option()"><i class="icon icon-down-open-2"></i> 高级选项</a>
+				</div>
+				## <div class="additional-btn">
+				## 	<a href="#" class="widget-toggle"><i class="icon-down-open-2"></i></a>
+				## </div>
+			</div>
+			<div class="widget-content padding" id="areaOpt" style="display:none;">
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">下拉条件:</label>
+							<div class="col-sm-10">
+								<select class="form-control">
+								  <option>条件一</option>
+								  <option>条件二</option>
+								  <option>条件三</option>
+								  <option>条件四</option>
+								  <option>条件五</option>
+								</select>
+							</div>
+						  </div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">日期:</label>
+							<div class="col-sm-10">
+							  <input type="text" readonly="readonly" class="form-control datepicker-input" placeholder="选择查询日期">
+							</div>
+					    </div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">数据类型:</label>
+							<div class="col-sm-10">
+								<select class="form-control">
+								  <option>类型一</option>
+								  <option>类型二</option>
+								  <option>类型三</option>
+								  <option>类型四</option>
+								</select>
+							</div>
+						  </div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">其他条件:</label>
+							<div class="col-sm-10">
+								<select class="form-control">
+								  <option>其他一</option>
+								  <option>其他二</option>
+								  <option>其他三</option>
+								  <option>其他四</option>
+								</select>
+							</div>
+						  </div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 查询结果显示模块 -->
+		<div class="widget">
+			<div class="widget-content">
+				
+					
+				<div class="table-responsive">
+					<table data-sortable="" class="table table-hover table-striped" data-sortable-initialized="true">
+						<thead>
+							<tr>
+								<th>序号</th>
+								<th>头像</th>
+								<th>姓名</th>
+								<th>部门</th>
+								<th>Email</th>
+								<th data-sortable="false">密码MD5</th>
+								<th>雇员ID</th>
+								<th data-sortable="false">操作</th>
+							</tr>
+						</thead>
+						
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td><span class="show-photo"><img src="/static/img/photo.jpg"/></span></td>
+								<td>唐莎莎</td>
+								<td>财务部</td>
+								<td><a href="mailto:#">name@domain.com</a></td>
+								<td>23G2XCVXZCVZXCVZSDFSDFXCVXZSDF</td>
+								<td><span class="label label-success">GY10003</span></td>
+								<td>
+									<a href="#">查看详情</a>
+								</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td><span class="show-photo"><img src="/static/img/photo.jpg"/></span></td>
+								<td>唐莎莎</td>
+								<td>财务部</td>
+								<td><a href="mailto:#">name@domain.com</a></td>
+								<td>23G2XCVXZCVZXCVZSDFSDFXCVXZSDF</td>
+								<td><span class="label label-success">GY10003</span></td>
+								<td>
+									<a href="#">查看详情</a>
+								</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td><span class="show-photo"><img src="/static/img/photo.jpg"/></span></td>
+								<td>唐莎莎</td>
+								<td>财务部</td>
+								<td><a href="mailto:#">name@domain.com</a></td>
+								<td>23G2XCVXZCVZXCVZSDFSDFXCVXZSDF</td>
+								<td><span class="label label-success">GY10003</span></td>
+								<td>
+									<a href="#">查看详情</a>
+								</td>
+							</tr>
+							<tr>
+								<td>4</td>
+								<td><span class="show-photo"><img src="/static/img/photo.jpg"/></span></td>
+								<td>唐莎莎</td>
+								<td>财务部</td>
+								<td><a href="mailto:#">name@domain.com</a></td>
+								<td>23G2XCVXZCVZXCVZSDFSDFXCVXZSDF</td>
+								<td><span class="label label-success">GY10003</span></td>
+								<td>
+									<a href="#">查看详情</a>
+								</td>
+							</tr>
+							<tr>
+								<td>5</td>
+								<td><span class="show-photo"><img src="/static/img/photo.jpg"/></span></td>
+								<td>唐莎莎</td>
+								<td>财务部</td>
+								<td><a href="mailto:#">name@domain.com</a></td>
+								<td>23G2XCVXZCVZXCVZSDFSDFXCVXZSDF</td>
+								<td><span class="label label-success">GY10003</span></td>
+								<td>
+									<a href="#">查看详情</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+					
+				<div class="data-table-toolbar">
+					<ul class="pagination pager">
+					  <li class="previous"><a href="#">首页</a></li>
+					  <li class="disabled"><a href="#">«</a></li>
+					  <li class="active"><a href="#">1</a></li>
+					  <li><a href="#">2</a></li>
+					  <li><a href="#">3</a></li>
+					  <li><a href="#">4</a></li>
+					  <li><a href="#">5</a></li>
+					  <li><a href="#">»</a></li>
+					  <li><input class="form-control" type="text" placeholder="页码"/></li>
+					  <li class="next"><a href="#">跳转</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		#block("footer")#widget("widget/footer.vm")#end
+	#end
+	#block("back_script")
+	<script>
+		function option(){
+			$("#areaOpt").slideToggle(200);
+		}
+	</script>
+	#end
+#end

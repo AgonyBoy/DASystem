@@ -1,0 +1,118 @@
+#extends("page/layout/default.vm")
+	#block("header")
+		<style>
+			p.tit{font-size:24px;font-weight:bold;}
+			span.animate-number{padding:0 10px;color:red;}
+		</style>
+	#end
+	#block("content")
+		<div class="row">
+
+
+			<div class="col-lg-3 col-md-6">
+				<div class="widget green-1 animated fadeInDown">
+					<div class="widget-content padding">
+						<div class="widget-icon"><i class="fa fa-users"></i></div>
+						<div class="text-box">
+							<p class="tit">雇员信息</p>
+							<p class="info">总人数<span class="animate-number" data-value="131" data-duration="2000"></span></p>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="widget darkblue-3 animated fadeInDown">
+					<div class="widget-content padding">
+						<div class="widget-icon"><i class="icon icon-address-book-alt"></i></div>
+						<div class="text-box">
+							<p class="tit">部门信息</p>
+							<p class="info"><span class="animate-number" data-value="13" data-duration="1000"></span>个部门</p>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="widget darkblue-2 animated fadeInDown">
+					<div class="widget-content padding">
+						<div class="widget-icon"><i class="fa fa-search"></i></div>
+						<div class="text-box">
+							<p class="tit">全文搜索</p>
+							<p class="info">关键字查找</p>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="widget lightblue-1 animated fadeInDown">
+					<div class="widget-content padding">
+						<div class="widget-icon"><i class="icon-globe-inv"></i></div>
+						<div class="text-box">
+							<p class="tit">其他业务</p>
+							<p class="info">业务详情或描述</p>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+<!--copy start-->
+
+			<div class="col-lg-3 col-md-6">
+				<div class="widget green-1 animated fadeInDown">
+					<div class="widget-content padding">
+						<div class="widget-icon"><i class="fa fa-users"></i></div>
+						<div class="text-box">
+							<p class="tit">雇员信息</p>
+							<p class="info">总人数<span class="animate-number" data-value="131" data-duration="2000"></span></p>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="widget darkblue-3 animated fadeInDown">
+					<div class="widget-content padding">
+						<div class="widget-icon"><i class="icon icon-address-book-alt"></i></div>
+						<div class="text-box">
+							<p class="tit">部门信息</p>
+							<p class="info"><span class="animate-number" data-value="13" data-duration="1000"></span>个部门</p>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="widget darkblue-2 animated fadeInDown">
+					<div class="widget-content padding">
+						<div class="widget-icon"><i class="fa fa-search"></i></div>
+						<div class="text-box">
+							<p class="tit">全文搜索</p>
+							<p class="info">关键字查找</p>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="widget lightblue-1 animated fadeInDown">
+					<div class="widget-content padding">
+						<div class="widget-icon"><i class="icon-globe-inv"></i></div>
+						<div class="text-box">
+							<p class="tit">其他业务</p>
+							<p class="info">业务详情或描述</p>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+<!-- copy end -->
+		</div>
+
+		<!--底部组件-->
+		#widget("/widget/footer.vm")
+	#end
+#end

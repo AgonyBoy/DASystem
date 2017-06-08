@@ -1,5 +1,63 @@
-#extends("page/layout/default.vm")
+#extends("page/layout/blank.vm")
+	#block("header")
+		<style>
+			p.text-center{
+				font-size:31px;
+				font-weight: bold;
+				color:#fff;
+				-webkit-text-stroke:0.5px #000;
+			}
+			div.full-content-center{max-width: 400px;}
+		</style>
+	#end
 	#block("content")
-		sdf
+		<body class="fixed-left login-page">
+			<div class="container">
+				<div class="full-content-center">
+					<p class="text-center">XX数据分析系统</p>
+					<div class="login-wrap animated flipInX">
+						<div class="login-block">
+							<img src="/static/img/photo.jpg" class="img-circle not-logged-avatar">
+							<form role="form" id='loginform' action="index.html">
+								<div class="form-group login-input">
+								<i class="fa fa-user overlay"></i>
+								<input type="text" name='username' class="form-control text-input" placeholder="用户名">
+								</div>
+								<div class="form-group login-input">
+								<i class="fa fa-key overlay"></i>
+								<input type="password" name='password' class="form-control text-input" placeholder="登录密码">
+								</div>
+								
+								<div class="row">
+									<div class="col-sm-12">
+									<button type="submit" class="btn btn-success btn-block">登录</button>
+									</div>
+									## <div class="col-sm-6">
+									## <a href="register.html" class="btn btn-default btn-block">Register</a>
+									## </div>
+								</div>
+							</form>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			
+			<!-- the overlay modal element -->
+			<div class="md-overlay"></div>
+		</body>
+		#block("back_script")
+		<script type="text/javascript" src="/components/jquery/jquery-2.1.0.js"></script>
+			<script>
+				$(function(){reset();});
+				$(window).resize(function(){reset();});
+				function reset(){
+					var _wh =$(window).height();
+					var _dh =$("div.full-content-center").height();
+					var _mg =(_wh - _dh)/2;
+					$("div.full-content-center").css({"margin-top":_mg+"px"});
+				}
+			</script>
+		#end
 	#end
 #end

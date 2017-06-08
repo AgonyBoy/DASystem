@@ -85,7 +85,7 @@
 	    ## #require("components/apps/todo.js")
 	    ## #require("components/apps/notes.js")
 	    ## #require("components/index.js")
-
+	    #block("header")#end
 	#end
     #body()
     	<div id="wrapper">
@@ -102,14 +102,12 @@
 			<!-- 内容部分 -->
 			<div class="content-page">
 				<div class="content">
-					<div class="page-heading">
-    					#block("content")#end
-					</div>
+
+					<!-- 内容占位 -->
+    				#block("content")#end
 
 					<!-- 底部模块 -->
-					<footer>
-
-					</footer>
+					#block("footer")#end
 				</div>
 			</div>
 		</div>

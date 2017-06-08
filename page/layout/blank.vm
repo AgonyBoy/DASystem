@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+#html()
+	#head()
+		<meta charset="UTF-8">
+	    <title>数据分析系统登录</title>   
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="description" content="">
+	    <meta name="keywords" content="数据分析系统">
+	    <meta name="author" content="liul">
+	    <style>
+	    	html,body{
+	    		height:100%;
+	    	}
+	    </style>
+	    #require("components/jqueryui/ui-lightness/jquery-ui-1.10.4.custom.min.css")
+	    #require("components/bootstrap/css/bootstrap.css")
+	    #require("components/fonts-awesome/css/font-awesome.css")
+	    #require("components/fontello/css/fontello.css")
+	    #require("components/animate-css/animate.min.css")
+	    #require("components/nifty-modal/css/component.css")
+	    #require("components/magnific-popup/magnific-popup.css")
+	    #require("components/ios7-switch/ios7-switch.css")
+	    #require("components/pace/pace.css")
+	    #require("components/sortable/sortable-theme-bootstrap.css")
+	    #require("components/bootstrap-datepicker/css/datepicker.css")
+	    #require("components/jquery-icheck/skins/all.css")
+	    #require("components/jquery-notifyjs/styles/metro/notify-metro.css")
+	    #require("components/prettify/github.css")
+	    #require("components/dashboard/style.css")
+	    #require("components/dashboard/style-responsive.css")
+
+	    #block("header")#end
+	#end
+    #block("content")#end
+    #block("back_script")#end
+#end
