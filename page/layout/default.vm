@@ -14,6 +14,7 @@
 	    	}
 	    </style>
 	    #require("components/jqueryui/ui-lightness/jquery-ui-1.10.4.custom.min.css")
+	    #require("components/layerui/css/layer.css")
 	    #require("components/bootstrap/css/bootstrap.css")
 	    #require("components/fonts-awesome/css/font-awesome.css")
 	    #require("components/fontello/css/fontello.css")
@@ -37,9 +38,11 @@
 	    ## #require("components/sortable/sortable-theme-bootstrap.css")
 	    ## #require("components/jquery-weather/simpleweather.css")
 	    ## #require("components/bootstrap-xeditable/css/bootstrap-editable.css")
+	    #require("components/orgchart/jquery.orgchart.css")
 
 	    #require("components/dashboard/style.css")
 	    #require("components/dashboard/style-responsive.css")
+	    #require("static/css/public.css")
 
 	    #require("components/jquery/jquery-2.1.0.js")
 	    #require("components/bootstrap/js/bootstrap.js")
@@ -69,6 +72,9 @@
 	    #require("components/apps/chat.js")
 	    #require("components/prettify/prettify.js")
 	    #require("components/init.js")
+	    #require("components/layerui/layer.js")
+	    #require("components/underscore/js/underscore.js")
+	    #require("components/orgchart/jquery.orgchart.js")
 	    ## #require("components/d3/d3.v3.js")
 	    ## #require("components/rickshaw/rickshaw.min.js")
 	    ## #require("components/raphael/raphael-min.js")
@@ -107,7 +113,7 @@
     				#block("content")#end
 
 					<!-- 底部模块 -->
-					#block("footer")#end
+					#block("footer")#widget("widget/footer.vm")#end
 				</div>
 			</div>
 		</div>

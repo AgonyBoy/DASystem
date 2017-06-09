@@ -7,10 +7,8 @@
 	#end
 	#block("content")
 		<div class="row">
-
-
 			<div class="col-lg-3 col-md-6">
-				<div class="widget green-1 animated fadeInDown">
+				<div class="widget green-1 animated fadeInRight">
 					<div class="widget-content padding">
 						<div class="widget-icon"><i class="fa fa-users"></i></div>
 						<div class="text-box">
@@ -22,7 +20,7 @@
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-6">
-				<div class="widget darkblue-3 animated fadeInDown">
+				<div class="widget darkblue-3 animated fadeInRight">
 					<div class="widget-content padding">
 						<div class="widget-icon"><i class="icon icon-address-book-alt"></i></div>
 						<div class="text-box">
@@ -34,7 +32,7 @@
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-6">
-				<div class="widget darkblue-2 animated fadeInDown">
+				<div class="widget darkblue-2 animated fadeInRight">
 					<div class="widget-content padding">
 						<div class="widget-icon"><i class="fa fa-search"></i></div>
 						<div class="text-box">
@@ -46,7 +44,7 @@
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-6">
-				<div class="widget lightblue-1 animated fadeInDown">
+				<div class="widget lightblue-1 animated fadeInRight">
 					<div class="widget-content padding">
 						<div class="widget-icon"><i class="icon-globe-inv"></i></div>
 						<div class="text-box">
@@ -61,7 +59,7 @@
 <!--copy start-->
 
 			<div class="col-lg-3 col-md-6">
-				<div class="widget green-1 animated fadeInDown">
+				<div class="widget green-1 animated fadeInRight">
 					<div class="widget-content padding">
 						<div class="widget-icon"><i class="fa fa-users"></i></div>
 						<div class="text-box">
@@ -73,7 +71,7 @@
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-6">
-				<div class="widget darkblue-3 animated fadeInDown">
+				<div class="widget darkblue-3 animated fadeInRight">
 					<div class="widget-content padding">
 						<div class="widget-icon"><i class="icon icon-address-book-alt"></i></div>
 						<div class="text-box">
@@ -85,7 +83,7 @@
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-6">
-				<div class="widget darkblue-2 animated fadeInDown">
+				<div class="widget darkblue-2 animated fadeInRight">
 					<div class="widget-content padding">
 						<div class="widget-icon"><i class="fa fa-search"></i></div>
 						<div class="text-box">
@@ -97,7 +95,7 @@
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-6">
-				<div class="widget lightblue-1 animated fadeInDown">
+				<div class="widget lightblue-1 animated fadeInRight">
 					<div class="widget-content padding">
 						<div class="widget-icon"><i class="icon-globe-inv"></i></div>
 						<div class="text-box">
@@ -111,8 +109,8 @@
 
 <!-- copy end -->
 		</div>
+<!--临时其他模块视图-->
 
-		<!--底部组件-->
-		#widget("/widget/footer.vm")
+<!--临时模块结束行-->
 	#end
 #end

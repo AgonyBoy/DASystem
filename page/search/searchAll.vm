@@ -1,0 +1,18 @@
+#extends("page/layout/default.vm")
+	#block("header")
+		<style>
+			
+		</style>
+	#end
+	#block("content")
+		<div class="row">
+			<span class="mbx"><a href="#"><i class="fa fa-search"></i> 全文搜索</a></span>
+		</div>
+		<div class="row">
+			
+		</div>
+	#end
+	#block("back_script")
+
+	#end
+#end

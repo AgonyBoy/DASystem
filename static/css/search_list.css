@@ -1,0 +1,104 @@
+.content-page > .content{padding:5px !important;}
+		.widget .widget-header{border-bottom:1px solid #DFDFDF !important;height:54px !important;}
+		@media (min-width: 768px){
+			.col-sm-10{width:55.333333% !important;padding-left:0 !important;}
+		}
+		@media (min-width: 768px){
+			.col-sm-2{width:20.666667% !important;}
+		}
+		@media (min-width: 768px){
+			.form-horizontal .control-label{padding-right:5px;}
+		}
+		@media (min-width: 768px){
+			input,select{max-width: 200px;}
+		}
+		span.area-tit{
+			font-size:16px;
+			line-height: 50px;
+			padding:0 10px;
+			color:#000;
+		}
+		div.btn-wrapper{float:right;margin-top:10px;margin-right: 5px;}
+		div.form-horizontal{margin-bottom: 0;padding-bottom: 10px;}
+		.data-table-toolbar{text-align: right;}
+		div.routine{
+			display: inline-flex;
+			padding:10px;
+		}
+		div.routine > label{
+			width:60px;
+			display: inline-table;
+			line-height: 35px;
+			color:#5b5b5b;
+		}
+		div.routine > input{margin-left:10px;}
+		div.widget-content.padding{
+			border-bottom:1px solid #dfdfdf;
+		}
+		th,td{
+		    white-space: nowrap;
+		    overflow: hidden;
+		    text-overflow: ellipsis;
+		    max-width: 15em;
+		    vertical-align: middle !important;
+		}
+		span.show-photo{
+			width:60px;
+			height:60px;
+			display: inline-block;
+			overflow: hidden;
+			margin-top:5px;
+			border-radius:50%;
+		}
+		span.show-photo > img{
+			width:100%;
+			min-height: 100%;
+		}
+		
+		.pagination > li{display:inline-block !important;}
+		.table-responsive{border-bottom:1px solid #dfdfdf;}
+		.pager li > input{float:left;margin-top:2px;width:65px;height:32px;padding-right:0;}
+		div.user-top{
+			position:relative;
+			width:100%;
+			padding:30px 20px;
+			padding-left:80px;
+			float:left;
+			border:1px solid #DFDFDF;
+			border-radius: 3px;
+			margin-bottom: 20px;
+		}
+		div.user-other{
+			position:relative;
+			width:100%;
+			min-height: 120px;
+			padding:20px 0;
+			float:left;
+			border:1px solid #DFDFDF;
+			border-radius: 3px;
+		}
+		strong{
+			position:absolute;
+			top:-12px;
+			left:5px;
+			color:#337ab7;
+			background:#FFF;
+			padding:0 10px;
+			font-size:13px;
+		}
+		span.user-photo{
+			width:60px;
+			height:60px;
+			display:inline-block;
+			overflow:hidden;
+			float:left;
+			margin-left:-65px;
+			margin-top:2px;
+		}
+		span.user-photo > img {
+			width:100%;
+			min-height: 100%;
+			float:letf;
+		}
+		.layui-layer-content div.row{margin:0 -10px;}
+		

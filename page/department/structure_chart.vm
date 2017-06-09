@@ -1,0 +1,47 @@
+#extends("page/layout/default.vm")
+	#block("header")
+		<style>
+			div.show-view{
+				width:100%;
+				height:400px;
+				float:left;
+				background:#FAFABF;
+				border:1px solid #b1b1b1;
+			}
+		</style>
+	#end
+	#block("content")
+		<div class="row">
+			<span class="mbx"><a href="#"><i class="fa fa-sitemap"></i> 部门管理</a><a href="#">部门结构图</a></span>
+		</div>
+		<div class="row">
+			<div class="show-view" id="structureView"></div>
+		</div>
+	#end
+	#block("back_script")
+	<script>
+		// sample of core source code
+		var datasource = {
+		  'name': 'Lao Lao',
+		  'title': 'general manager',
+		  'children': [
+		    { 'name': 'Bo Miao', 'title': 'department manager' },
+		    { 'name': 'Su Miao', 'title': 'department manager',
+		      'children': [
+		        { 'name': 'Tie Hua', 'title': 'senior engineer' },
+		        { 'name': 'Hei Hei', 'title': 'senior engineer' }
+		      ]
+		    },
+		    { 'name': 'Hong Miao', 'title': 'department manager' },
+		    { 'name': 'Chun Miao', 'title': 'department manager' }
+		  ]
+		};
+
+		$('#structureView').orgchart({
+		  'data' : datasource,
+		  'depth': 2,
+		  'nodeContent': 'title'
+		});
+	</script>
+	#end
+#end

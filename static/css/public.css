@@ -1,0 +1,16 @@
+span.mbx{
+			width:100%;
+			padding:0 10px;
+			height:30px;
+			display: block;
+			background:#f3f3f3;
+			line-height: 30px;
+			border-bottom: 3px solid #ececec;
+		}
+		span.mbx > a{color:#48a4f3;}
+		span.mbx > a:after{
+			content:"/ ";
+			color: #b7b7b7;
+			padding:0 5px;
+		}
+		span.mbx > a:last-child:after{content:"";}

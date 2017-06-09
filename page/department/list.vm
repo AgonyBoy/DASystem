@@ -1,0 +1,244 @@
+#extends("page/layout/default.vm")
+	#block("header")
+		#require("static/css/search_list.css")
+	#end
+	#block("content")
+
+		<!-- 条件选择模块 -->
+		<div class="widget form-horizontal">
+			<span class="mbx"><a href="#"><i class="fa fa-users"></i> 部门管理</a><a href="#">部门列表</a></span>
+			<div class="widget-header transparent">
+				<div class="routine">
+					<label>选择类型:</label>
+					<select class="form-control">
+						<option>类型1</option>
+						<option>类型2</option>
+						<option>类型3</option>
+					</select>
+					<input type="text" class="form-control" placeholder="输入过滤关键字"/>
+				</div>
+				<div class="btn-wrapper">
+	                <a class="btn btn-primary"><i class="fa fa-search"></i> 查询</a>
+	                <a class="btn btn-success"><i class="fa fa-refresh"></i> 重置条件</a>
+	                <a class="btn btn-info" onclick="option()"><i class="icon icon-down-open-2"></i> 高级选项</a>
+				</div>
+				## <div class="additional-btn">
+				## 	<a href="#" class="widget-toggle"><i class="icon-down-open-2"></i></a>
+				## </div>
+			</div>
+			<div class="widget-content padding" id="areaOpt" style="display:none;">
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">下拉条件:</label>
+							<div class="col-sm-10">
+								<select class="form-control">
+								  <option>条件一</option>
+								  <option>条件二</option>
+								  <option>条件三</option>
+								  <option>条件四</option>
+								  <option>条件五</option>
+								</select>
+							</div>
+						  </div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">日期:</label>
+							<div class="col-sm-10">
+							  <input type="text" readonly="readonly" class="form-control datepicker-input" placeholder="选择查询日期">
+							</div>
+					    </div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">数据类型:</label>
+							<div class="col-sm-10">
+								<select class="form-control">
+								  <option>类型一</option>
+								  <option>类型二</option>
+								  <option>类型三</option>
+								  <option>类型四</option>
+								</select>
+							</div>
+						  </div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">其他条件:</label>
+							<div class="col-sm-10">
+								<select class="form-control">
+								  <option>其他一</option>
+								  <option>其他二</option>
+								  <option>其他三</option>
+								  <option>其他四</option>
+								</select>
+							</div>
+						  </div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 查询结果显示模块 -->
+		<div class="widget">
+			<div class="widget-content">
+				
+					
+				<div class="table-responsive">
+					<table data-sortable="" class="table table-hover table-striped" data-sortable-initialized="true">
+						<thead>
+							<tr>
+								<th>序号</th>
+								<th>头像</th>
+								<th>姓名</th>
+								<th>部门</th>
+								<th>Email</th>
+								<th data-sortable="false">密码MD5</th>
+								<th>雇员ID</th>
+								<th data-sortable="false">操作</th>
+							</tr>
+						</thead>
+						
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td><a class="userInfo" href="#" id="GY10003"><span class="show-photo"><img src="/static/img/photo.jpg"/></span></a></td>
+								<td><a class="userInfo" href="#" id="GY10003">唐莎莎</a></td>
+								<td>财务部</td>
+								<td><a href="mailto:#">name@domain.com</a></td>
+								<td>23G2XCVXZCVZXCVZSDFSDFXCVXZSDF</td>
+								<td><span class="label label-success">GY10003</span></td>
+								<td>
+									<a class="userInfo" href="#" id="GY1003">查看详情</a>
+								</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td><a class="userInfo" href="#" id="GY10003"><span class="show-photo"><img src="/static/img/photo.jpg"/></span></a></td>
+								<td><a class="userInfo" href="#" id="GY10003">唐莎莎</a></td>
+								<td>财务部</td>
+								<td><a href="mailto:#">name@domain.com</a></td>
+								<td>23G2XCVXZCVZXCVZSDFSDFXCVXZSDF</td>
+								<td><span class="label label-success">GY10003</span></td>
+								<td>
+									<a class="userInfo" href="#" id="GY1003">查看详情</a>
+								</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td><a class="userInfo" href="#" id="GY10003"><span class="show-photo"><img src="/static/img/photo.jpg"/></span></a></td>
+								<td><a class="userInfo" href="#" id="GY10003">唐莎莎</a></td>
+								<td>财务部</td>
+								<td><a href="mailto:#">name@domain.com</a></td>
+								<td>23G2XCVXZCVZXCVZSDFSDFXCVXZSDF</td>
+								<td><span class="label label-success">GY10003</span></td>
+								<td>
+									<a class="userInfo" href="#" id="GY1003">查看详情</a>
+								</td>
+							</tr>
+							<tr>
+								<td>4</td>
+								<td><a class="userInfo" href="#" id="GY10003"><span class="show-photo"><img src="/static/img/photo.jpg"/></span></a></td>
+								<td><a class="userInfo" href="#" id="GY10003">唐莎莎</a></td>
+								<td>财务部</td>
+								<td><a href="mailto:#">name@domain.com</a></td>
+								<td>23G2XCVXZCVZXCVZSDFSDFXCVXZSDF</td>
+								<td><span class="label label-success">GY10003</span></td>
+								<td>
+									<a class="userInfo" href="#" id="GY1003">查看详情</a>
+								</td>
+							</tr>
+							<tr>
+								<td>5</td>
+								<td><a class="userInfo" href="#" id="GY10003"><span class="show-photo"><img src="/static/img/photo.jpg"/></span></a></td>
+								<td><a class="userInfo" href="#" id="GY10003">唐莎莎</a></td>
+								<td>财务部</td>
+								<td><a href="mailto:#">name@domain.com</a></td>
+								<td>23G2XCVXZCVZXCVZSDFSDFXCVXZSDF</td>
+								<td><span class="label label-success">GY10003</span></td>
+								<td>
+									<a class="userInfo" href="#" id="GY1003">查看详情</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+					
+				<div class="data-table-toolbar">
+					<ul class="pagination pager">
+					  <li class="previous"><a href="#">首页</a></li>
+					  <li class="disabled"><a href="#">«</a></li>
+					  <li class="active"><a href="#">1</a></li>
+					  <li><a href="#">2</a></li>
+					  <li><a href="#">3</a></li>
+					  <li><a href="#">4</a></li>
+					  <li><a href="#">5</a></li>
+					  <li><a href="#">»</a></li>
+					  <li><input class="form-control" type="number" placeholder="页码"/></li>
+					  <li class="next"><a href="#">跳转</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	#end
+	#block("back_script")
+
+	<!-- 用户详情弹窗模板视图 -->
+	<script id="layerTpl" type="text/html">
+		<div class="row">
+			<div class="user-top">
+				<strong>基本信息</strong>
+				<span class="user-photo"><img src="/static/img/test.jpg"/></span>
+				<div class="col-sm-6">
+					<p><label>雇员ID：</label>GY1002</p>
+				</div>
+				<div class="col-sm-6">
+					<p><label>姓名：</label>张三</p>
+				</div>
+				<div class="col-sm-6">
+					<p><label>部门：</label>财务部</p>
+				</div>
+				<div class="col-sm-6">
+					<p><label>Email邮箱：</label>234349923@163.com</p>
+				</div>
+				<div class="col-sm-6">
+					<p><label>MD5密码：</label>KSJHDF23Kk23Hg2398klsdeWE</p>
+				</div>
+			</div>
+			<div class="user-other">
+				<strong>相关信息</strong>
+				<div class="col-sm-12">
+					<p><label>备注信息：</label>其他备注信息详情...</p>
+				</div>
+			</div>
+		</div>
+	</script>
+	<script>
+
+		var data = {
+		  "title":"Layui常用模块"
+		  ,"list":[{"modname":"弹层","alias":"layer","site":"layer.layui.com"},{"modname":"表单","alias":"form"}]
+		}
+
+		//收缩高级查询视图
+		function option(){
+			$("#areaOpt").slideToggle(200);
+		}
+
+		//查看雇员信息详情
+		$("a.userInfo").click(function(){
+			var _gy_id = $(this).attr("id");
+			var getTpl = layerTpl.innerHTML;
+
+			    layer.open({
+			    	title:"<i class='glyphicon glyphicon-user'></i> 信息详情",
+			    	btn:['关闭窗口'],
+			    	area: ['60%', '500px'],
+					content:getTpl
+				});
+			
+		});
+	</script>
+	#end
+#end
