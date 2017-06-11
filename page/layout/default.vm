@@ -8,11 +8,7 @@
 	    <meta name="description" content="">
 	    <meta name="keywords" content="数据分析系统">
 	    <meta name="author" content="liul">
-	    <style>
-	    	html,body{
-	    		height:100%;
-	    	}
-	    </style>
+
 	    #require("components/jqueryui/ui-lightness/jquery-ui-1.10.4.custom.min.css")
 	    #require("components/layerui/css/layer.css")
 	    #require("components/bootstrap/css/bootstrap.css")
@@ -38,13 +34,16 @@
 	    ## #require("components/sortable/sortable-theme-bootstrap.css")
 	    ## #require("components/jquery-weather/simpleweather.css")
 	    ## #require("components/bootstrap-xeditable/css/bootstrap-editable.css")
-	    #require("components/orgchart/jquery.orgchart.css")
+	    #require("components/orgchart/jquery.orgcharts.css")
 
 	    #require("components/dashboard/style.css")
 	    #require("components/dashboard/style-responsive.css")
 	    #require("static/css/public.css")
 
-	    #require("components/jquery/jquery-2.1.0.js")
+	    <!--顶部其他样式占位符-->
+	    #block("header")#end
+
+	    #require("components/jquery/jquery-3.1.0.min.js")
 	    #require("components/bootstrap/js/bootstrap.js")
 	    #require("components/jqueryui/jquery-ui-1.10.4.custom.min.js")
 	    #require("components/jquery-ui-touch/jquery.ui.touch-punch.min.js")
@@ -69,12 +68,13 @@
 	    #require("components/bootstrap-datepicker/js/bootstrap-datepicker.js")
 	    #require("components/jquery-icheck/icheck.min.js")
 
-	    #require("components/apps/chat.js")
+	    ## #require("components/apps/chat.js")
 	    #require("components/prettify/prettify.js")
 	    #require("components/init.js")
 	    #require("components/layerui/layer.js")
 	    #require("components/underscore/js/underscore.js")
-	    #require("components/orgchart/jquery.orgchart.js")
+	    #require("components/orgchart/html2canvas.js")
+	    #require("components/orgchart/jquery.orgcharts.js")
 	    ## #require("components/d3/d3.v3.js")
 	    ## #require("components/rickshaw/rickshaw.min.js")
 	    ## #require("components/raphael/raphael-min.js")
@@ -91,35 +91,34 @@
 	    ## #require("components/apps/todo.js")
 	    ## #require("components/apps/notes.js")
 	    ## #require("components/index.js")
-	    #block("header")#end
+			<script>
+				var resizefunc = [];
+			</script>
 	#end
     #body()
     	<div id="wrapper">
 
-    		<!-- 顶部导航 -->
-			#widget("/widget/header.vm")
+	    		<!-- 顶部导航 -->
+				#widget("/widget/header.vm")
 
-			<!-- 左边菜单 -->
-			#widget("/widget/leftMenu.vm")
+				<!-- 左边菜单 -->
+				#widget("/widget/leftMenu.vm")
 
-			<!-- 右边菜单 -->
-			<div class="right side-menu"></div>
+				<!-- 右边菜单 -->
+				<div class="right side-menu"></div>
 
-			<!-- 内容部分 -->
-			<div class="content-page">
-				<div class="content">
+				<!-- 内容部分 -->
+				<div class="content-page">
+					<div class="content">
 
-					<!-- 内容占位 -->
-    				#block("content")#end
+						<!-- 内容占位 -->
+	    				#block("content")#end
 
-					<!-- 底部模块 -->
-					#block("footer")#widget("widget/footer.vm")#end
+						<!-- 底部模块 -->
+						#block("footer")#widget("widget/footer.vm")#end
+					</div>
 				</div>
 			</div>
-		</div>
-		<script>
-			var resizefunc = [];
-		</script>
     #end
-    #block("back_script")#end
+	  #block("back_script")#end
 #end

@@ -1,18 +1,153 @@
 #extends("page/layout/default.vm")
 	#block("header")
 		<style>
-			
+			div.widget-content{
+				padding:10px;
+				min-height: 400px;
+			}
+			div.widget-header{
+				height:auto !important;
+				float:left;
+				padding:20px 0;
+			}
+			.search{border-bottom:0 !important;}
+			div.widget-header > .col-lg-12 > .input-group > input[type='text']{width: 200px;}
+			@media (min-width:768px){
+				div.widget-header > .col-lg-12 > .input-group > input[type='text']{width: 400px;}
+			}
+			.search > .col-lg-12{text-align: center;}
+			div.widget-header > .col-lg-12 > div.row{display:inline-block;margin-left:0;margin-right: 10px;}
+			.search > .col-lg-12 > div.row{display: block !important;}
+			div.widget-header > .col-lg-12 > div.row> img{width:38px;}
+			.search > .col-lg-12 > div.row> img{
+				width:80px !important;
+				margin:50px 20px;
+				margin-top:100px;
+			}
+			div.widget-header > .col-lg-12 > .input-group{display: inline-flex;}
+			.btn:focus{color:#FFF !important;}
+
+			div.info{width:40%;min-width:280px;}
+			div.info >h5 > a{text-decoration:underline !important}
+			div.widget-content > div.inline{padding:10px 0;}
+			.search ~ div.widget-content > p{display:none;}
+			.widget-content em{font-style: normal;color: #c00;}
+			/*分页按钮组样式*/
+			.data-table-toolbar{display:none;}
+			.pagination > li {display: inline-block !important;}
 		</style>
 	#end
 	#block("content")
-		<div class="row">
+		<div class="widget form-horizontal">
 			<span class="mbx"><a href="#"><i class="fa fa-search"></i> 全文搜索</a></span>
-		</div>
-		<div class="row">
-			
+
+			<!--搜索框-->
+			<div class="widget-header search">
+				<div class="col-lg-12">
+					<div class="row"><img src="/static/img/search.jpg"/></div>
+					<div class="input-group">
+					  <input type="text" class="form-control" placeholder="全文关键字索引搜索" id="searchAll"/>
+					  <span class="input-group-btn">
+							<button class="btn btn-blue-3" id="searchBtn">立即搜索</button>
+					  </span>
+					</div>
+			  </div>
+			</div>
+
+			<!--搜索列表-->
+			<div class="widget-content" id="showContent">
+				<p>点击“立即搜索”按钮全文搜索。</p>
+			</div>
+
+			<!--分页导航-->
+			<div class="data-table-toolbar" id="page">
+				<ul class="pagination pager">
+				  <li class="previous"><a href="#">首页</a></li>
+				  <li class="disabled"><a href="#">«</a></li>
+				  <li class="active"><a href="#">1</a></li>
+				  <li><a href="#">2</a></li>
+				  <li><a href="#">3</a></li>
+				  <li><a href="#">4</a></li>
+				  <li><a href="#">5</a></li>
+				  <li><a href="#">»</a></li>
+				  ## <li><input class="form-control" type="number" placeholder="页码"></li>
+				  ## <li class="next"><a href="#">跳转</a></li>
+				</ul>
+			</div>
+
 		</div>
 	#end
 	#block("back_script")
 
+		<!--搜索结果数据模板-->
+		<script type="text/template" id="underModel">
+			<%_.each(data,function(d){%>
+				<div class="inline">
+					<div class="info">
+						<h5><a href="#"><%=d.title%></a></h5>
+						<p><%=d.content%></p>
+					</div>
+				</div>
+			<%});%>
+		</script>
+
+		<script type="text/javascript">
+
+			var _model = _.template($("#underModel").html());    //获取模板函数
+
+			//搜索框输入事件
+			$("#searchAll").keyup(function(){
+				var _t =$(this).val();
+				if(_t!=""&&_t!=null){
+					$("div.widget-header").removeClass("search");
+				}
+			});
+
+			//点击搜索全文
+			$("#searchBtn").click(function(){
+				 var _t =$("#searchAll").val();
+				 if(_t!="" && _t!=null){
+
+				 	 //执行接口搜索
+			  		$.ajax({
+			  			type:"post",
+			  			url:"/search/fulltext",
+			  			data:{text:_t},
+			  			success:function(res){
+			  				var _list =strReplace(_t,res.data);					//关键字高亮替换
+			  				var _html =_model({data:_list});						//将数据渲染到模板
+			  				$("#showContent").empty().append(_html);		//展示搜索结果视图数据
+
+			  				if(res.data.length>5){
+			  					$("#page").css("display","block");        //临时效果展示，分页视图需要根据需求动态创建
+			  				}
+			  			},
+			  			error:function(XMLHttpRequest,status,error){
+
+			  			}
+			  		});
+
+				 }
+			});
+
+			//关键字高亮替换
+			function strReplace(t,data){
+				if($.isArray(data) && data.length>0){
+					for(var i=0;i<data.length;i++){
+						var _tit = data[i].title;
+						var _ct = data[i].content;
+						var	_re = new RegExp(t,"g");
+
+						if(_tit.indexOf(t)>-1){
+							data[i].title = _tit.replace(_re,"<em>"+t+"</em>");
+						}
+						if(_ct.indexOf(t)>-1){
+							data[i].content = _ct.replace(_re,"<em>"+t+"</em>");
+						}
+					}
+				}
+				return data;
+			}
+		</script>
 	#end
 #end

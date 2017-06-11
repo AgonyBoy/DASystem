@@ -9,18 +9,18 @@
 			<span class="mbx"><a href="#"><i class="fa fa-users"></i> 部门管理</a><a href="#">部门列表</a></span>
 			<div class="widget-header transparent">
 				<div class="routine">
-					<label>选择类型:</label>
+					<label>归属部门:</label>
 					<select class="form-control">
-						<option>类型1</option>
-						<option>类型2</option>
-						<option>类型3</option>
+						<option>财务部</option>
+						<option>开发部</option>
+						<option>人事部</option>
 					</select>
 					<input type="text" class="form-control" placeholder="输入过滤关键字"/>
 				</div>
 				<div class="btn-wrapper">
 	                <a class="btn btn-primary"><i class="fa fa-search"></i> 查询</a>
 	                <a class="btn btn-success"><i class="fa fa-refresh"></i> 重置条件</a>
-	                <a class="btn btn-info" onclick="option()"><i class="icon icon-down-open-2"></i> 高级选项</a>
+	                ## <a class="btn btn-info" onclick="option()"><i class="icon icon-down-open-2"></i> 高级选项</a>
 				</div>
 				## <div class="additional-btn">
 				## 	<a href="#" class="widget-toggle"><i class="icon-down-open-2"></i></a>

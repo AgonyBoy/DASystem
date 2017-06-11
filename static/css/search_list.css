@@ -1,5 +1,5 @@
 .content-page > .content{padding:5px !important;}
-		.widget .widget-header{border-bottom:1px solid #DFDFDF !important;height:54px !important;}
+		.widget .widget-header{border-bottom:1px solid #DFDFDF !important;}
 		@media (min-width: 768px){
 			.col-sm-10{width:55.333333% !important;padding-left:0 !important;}
 		}

@@ -116,7 +116,7 @@
     if (opts.exportButton && !$chartContainer.find('.oc-export-btn').length) {
       var $exportBtn = $('<button>', {
         'class': 'oc-export-btn' + (opts.chartClass !== '' ? ' ' + opts.chartClass : ''),
-        'text': 'Export',
+        'text': '导出结构图',
         'click': function(e) {
           e.preventDefault();
           if ($(this).children('.spinner').length) {
@@ -630,7 +630,7 @@
     var $nodeDiv = $('<div' + (opts.draggable ? ' draggable="true"' : '') + (nodeData[opts.nodeId] ? ' id="' + nodeData[opts.nodeId] + '"' : '') + (nodeData.parentId ? ' data-parent="' + nodeData.parentId + '"' : '') + '>')
       .addClass('node ' + (nodeData.className || '') +  (level >= opts.depth ? ' slide-up' : ''))
       .append('<div class="title">' + nodeData[opts.nodeTitle] + '</div>')
-      .append(typeof opts.nodeContent !== 'undefined' ? '<div class="content">' + (nodeData[opts.nodeContent] || '') + '</div>' : '');
+      .append(typeof opts.nodeContent !== 'undefined' ? '<div class="content"><p>人数:' + (nodeData[opts.nodeContent] || '') + '</p></div>' : '');
     // append 4 direction arrows or expand/collapse buttons
     var flags = nodeData.relationship || '';
     if (opts.verticalDepth && (level + 2) > opts.verticalDepth) {

@@ -2,46 +2,161 @@
 	#block("header")
 		<style>
 			div.show-view{
+				position:relative;
 				width:100%;
-				height:400px;
+				height:600px;
 				float:left;
-				background:#FAFABF;
+				text-align:center;
+				background:#fff;
 				border:1px solid #b1b1b1;
+			}
+			.iradio_square-aero{margin:-4px 5px 0 15px !important;}
+			div.content-page > .content{padding:5px !important;}
+			div.routine{
+		    display: -webkit-inline-flex;
+			  display: -ms-inline-flexbox;
+			  display: inline-flex;
+			  padding: 10px;
+			}
+			div.routine > label {
+		    min-width: 60px;
+		    display: inline-table;
+		    line-height: 35px;
+		    color: #5b5b5b;
+			}
+
+			/*orgchart样式二次调整*/
+			.l2r{left:0;}
+			.orgchart .node .title{font-size:16px !important;}
+			.orgchart .node .content{height:inherit !important;padding:0 10px;}
+			.orgchart .node .content > p{margin:0;margin:5px 0;color:rgba(90, 126, 202, 0.8);font-weight:bold;}
+
+			/*结构图用户信息卡样式*/
+			div.uif{
+				width:110px;
+				padding:5px 0;
+				display:inline-block;
+			}
+			div.uif > div.ifo{
+				width:100%;
+				padding:10px 5px;
+				float:left;
+				border:1px solid #dfdfdf;
+			}
+			div.uif img{
+				width:60px;
+				height:60px;
+				text-align:left;
+				margin-bottom:10px;
+				border-radius:50%;
+			}
+			div.ifo > p{
+				margin:0;
+				text-align:left;
+				white-space:initial;
 			}
 		</style>
 	#end
 	#block("content")
-		<div class="row">
-			<span class="mbx"><a href="#"><i class="fa fa-sitemap"></i> 部门管理</a><a href="#">部门结构图</a></span>
-		</div>
-		<div class="row">
-			<div class="show-view" id="structureView"></div>
+
+		<div class="widget form-horizontal">
+
+			<!--面包屑导航-->
+			<div class="widget-content">
+				<span class="mbx"><a href="#"><i class="fa fa-sitemap"></i> 部门管理</a><a href="#">部门结构图</a></span>
+			</div>
+
+			<!--条件区 -->
+			<div class="widget-header transparent">
+				<div class="routine">
+					<label>显示部门:</label>
+					<select class="form-control">
+						<option>全部</option>
+						<option>董事会</option>
+						<option>财务部</option>
+						<option>开发部</option>
+					</select>
+					<!--
+					<label onclick="showChart('t2b')"><input type="radio" checked="checked" name="radio"/>垂直分布</label>
+					<label onclick="showChart('l2r')"><input class="show" type="radio" show="l2r" name="radio"/>横向分布</label>
+					-->
+				</div>
+			</div>
+
+			<!--视图展示区-->
+			<div class="widget-content">
+				<div class="show-view" id="structureView"></div>
+			</div>
+
 		</div>
 	#end
 	#block("back_script")
-	<script>
-		// sample of core source code
-		var datasource = {
-		  'name': 'Lao Lao',
-		  'title': 'general manager',
-		  'children': [
-		    { 'name': 'Bo Miao', 'title': 'department manager' },
-		    { 'name': 'Su Miao', 'title': 'department manager',
-		      'children': [
-		        { 'name': 'Tie Hua', 'title': 'senior engineer' },
-		        { 'name': 'Hei Hei', 'title': 'senior engineer' }
-		      ]
-		    },
-		    { 'name': 'Hong Miao', 'title': 'department manager' },
-		    { 'name': 'Chun Miao', 'title': 'department manager' }
-		  ]
-		};
+	<script type="text/template" id="underModel">
+		<%_.each(data,function(d){%>
+			<div class="uif">
+				<div class="ifo">
+					<div class="row"><img src="<%=d.thumb%>"/></div>
+					<p>姓名：<%=d.name%></p>
+					<p>性别：<%=d.sex%></p>
+					<p>工龄：<%=d.job%>年</p>
+					<p>其他说明:<%=d.remarks%></p>
+				</div>
+			</div>
+		<%});%>
+	</script>
+	<script type="text/javascript">
 
-		$('#structureView').orgchart({
-		  'data' : datasource,
-		  'depth': 2,
-		  'nodeContent': 'title'
+		var _model = _.template($("#underModel").html());
+
+		// 结构视图测试数据
+		var datasource = $data;
+
+		//加载执行
+		$(function(){
+			showChart('t2b');									//默认从上向下展示结构图
 		});
+
+		//显示结构视图
+		function showChart(t){
+
+			$('#structureView').empty();			//清空显示数据
+			$('#structureView').orgchart({
+			  'data' : datasource,						//显示数据
+			  'pan':true,											//是否允许移动结构图
+			  // 'zoom':true,										//是否允许鼠标缩放
+			  'toggleSiblingsResp':true,
+			  'depth': 4,											//结构视图显示到什么级别
+			  'exportButton': true, 					//是否显示导出视图按钮
+			  'exportFilename':"部门结构图",  //导出图片默认名称
+			  'nodeContent': 'title',					//
+			  'direction': t,                 //视图展示模式
+			  'createNode':function(node,data){
+			  	node.on('click',function(){
+			  		// var _html =_model({list:[{name:"唐莎莎",sex:"女",job:3,remarks:"其他个人相关备注说明信息..."},{name:"唐莎莎",sex:"女",job:3,remarks:"其他个人相关备注说明信息..."}]});
+
+			  		var _ct =node.find("div.content");
+			  		if(_ct.find("div.uif").length==0){
+
+			  			//异步请求部门员工信息展示
+				  		$.ajax({
+				  			type:"post",
+				  			url:"/get/bmUser",
+				  			data:{},
+				  			success:function(data){
+			  					_ct.append(_model(data));
+				  			},
+				  			error:function(XMLHttpRequest,status,error){
+
+				  			}
+				  		});
+			  		}else{
+			  			_ct.find("div.uif").slideToggle();
+			  		}
+			  	});
+			  }
+			});
+		}
+
 	</script>
 	#end
 #end

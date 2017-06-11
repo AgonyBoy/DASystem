@@ -1,4 +1,8 @@
-span.mbx{
+		html,body{height:100%;}
+		#wrapper > .content-page > .content{padding:5px;}
+		.widget-header{background-color: #FFF;}
+		.slimScrollDiv{background-color:#3E4B53;}
+		span.mbx{
 			width:100%;
 			padding:0 10px;
 			height:30px;
